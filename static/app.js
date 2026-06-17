@@ -9,3 +9,6 @@ function open_modal(){
 function close_modal(){
     modal.classList.remove("show");
 }
+
+new_data_btn.addEventListener("click", open_modal);
+close_btn.addEventListener("click", close_modal);
