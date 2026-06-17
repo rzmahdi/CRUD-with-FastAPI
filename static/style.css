@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div.search-box{
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-box input{
+    width: 80%;
+    padding: .5rem;
+    border-radius: 1rem;
+    border: 2px solid teal;
+}
+.search-box input:focus{
+    outline: 0;
+}
