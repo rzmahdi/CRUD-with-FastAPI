@@ -12,3 +12,9 @@ function close_modal(){
 
 new_data_btn.addEventListener("click", open_modal);
 close_btn.addEventListener("click", close_modal);
+
+modal.addEventListener("click", function(event){
+    if(event.target === modal){
+        close_modal();
+    }
+})
