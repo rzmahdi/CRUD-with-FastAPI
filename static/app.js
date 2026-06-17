@@ -5,3 +5,7 @@ const close_btn = document.getElementById("close-btn");
 function open_modal(){
     modal.classList.add("show");
 }
+
+function close_modal(){
+    modal.classList.remove("show");
+}
