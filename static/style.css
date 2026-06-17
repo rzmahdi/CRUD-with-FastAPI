@@ -13,7 +13,7 @@ div.search-box{
     justify-content: center;
 }
 .search-box input{
-    width: 80%;
+    width: 75%;
     padding: .7rem;
     border-radius: 1rem;
     border: 2px solid teal;
@@ -21,6 +21,18 @@ div.search-box{
 }
 .search-box input:focus{
     outline: 0;
+}
+.search-box button{
+    background-color: transparent;
+    width: 90px;
+    padding: .7rem;
+    margin: 0 .2rem;
+    border: 2px solid teal;
+    border-radius: .5rem;
+    transition: all .3s ease;
+}
+.search-box button:hover{
+    border-color: rgba(0, 128, 128, 0.5);
 }
 
 div.content{
