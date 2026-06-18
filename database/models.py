@@ -8,4 +8,4 @@ class Contact(Base):
     id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String(50), nullable=False, unique=True)
     category = Column(String(30), nullable=False)
-    phone = Column(String(12), nullable=False)
+    phone = Column(String(13), nullable=False)
