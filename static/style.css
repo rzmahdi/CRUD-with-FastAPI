@@ -48,6 +48,15 @@ div.modal-add-new-data-box{
 #modal-overlay input:focus{
     outline: none;
 }
+.error{
+    color: red;
+}
+span.error{
+    display: none;
+}
+span.error.show{
+    display: block;
+}
 #modal-overlay h3{
     margin: .3rem .5rem;
 }
