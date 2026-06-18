@@ -14,7 +14,7 @@
 html{
     font-family: sans-serif;
 }
-div#modal-overlay{
+div#modal-overlay, div#modal-overlay-error{
     display: none;
     position: fixed;
     top: 0;
@@ -23,10 +23,13 @@ div#modal-overlay{
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
 }
-#modal-overlay.show{
+div#modal-overlay-error{
+    z-index: 99;
+}
+#modal-overlay.show, #modal-overlay-error.show{
     display: block;
 }
-div.modal-add-new-data-box{
+div.modal-add-new-data-box, div.modal-error-box{
     background: white;
     width: 90%;
     max-width: 500px;
@@ -72,7 +75,7 @@ span.error.show{
     border-radius: .3rem;
     cursor: pointer;   
 }
-#close-btn{
+#close-btn, #modal-error-close-btn{
     position: absolute;
     width: 2rem;
     height: 2rem;
