@@ -38,7 +38,14 @@ add_contact_btn.addEventListener("click", async () => {
     }else{
         phone_error_span.classList.remove("show");
     }
-    
+
+    if(!phone_validation(phone)){
+        phone_validation_error_span.classList.add("show");
+        have_error = true;
+    }else{
+        phone_validation_error_span.classList.remove("show");
+    }
+        
     if(have_error){
         return
     }else{
