@@ -8,6 +8,8 @@ const notif_modal = document.getElementById("modal-overlay-error");
 const close_notif_btn = document.getElementById("modal-error-close-btn");
 const error_modal_span = document.getElementById("error-modal-text");
 
+const table_body = document.getElementById("contacts-table-body")
+
 
 function close_modal(){
     notif_modal.classList.remove("show");
@@ -82,10 +84,32 @@ add_contact_btn.addEventListener("click", async () => {
             if(response["status"] === 409){
                 error_modal_span.innerHTML = "❌اطلاعات از قبل وجود دارد!";
                 notif_modal.classList.add("show");
-            }else{
+            }else if(response.ok){
                 error_modal_span.innerHTML = "✅اطاعات با موفقیت ثبت شد!";
                 notif_modal.classList.add("show");
+                load_contacts();
             }
         }
     }    
 })
+
+
+async function load_contacts(){
+    const contacts_response = await fetch("/contacts");
+    const contacts = await contacts_response.json();
+
+    table_body.innerHTML = ""
+
+
+    contacts.forEach(contact => {
+        table_body.innerHTML += `
+            <tr>
+                <td>${contact.name}</td>
+                <td>${contact.category}</td>
+                <td>${contact.phone}</td>
+            </tr>
+        `;
+    });
+}
+
+load_contacts();
