@@ -7,13 +7,19 @@
     <title>شماره هایی که به کارت میاد</title>
 </head>
 <body>
-    <div id="modal-overlay">
+    <div id="modal-overlay" class="show">
         <div class="modal-add-new-data-box">
             <button id="close-btn">x</button>
             <h3>اضافه کردن اطلاعات</h3>
             <input type="text" name="business-name" id="add-business-name" placeholder="نام کسب و کار">
+            <span id="business-name-error" class="error"></span>
+
             <input type="text" name="category" id="add-category" placeholder="دسته‌بندی">
+            <span id="category-error" class="error"></span>
+
             <input type="text" name="phone" id="add-phone" placeholder="شماره تماس">
+            <span id="phone-error" class="error"></span>
+
             <button type="button" id="add-new-data-btn">اضافه کردن</button>
         </div>
     </div>
