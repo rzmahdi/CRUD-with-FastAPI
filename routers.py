@@ -26,6 +26,6 @@ def create_contact(request: CreateContactSchema, db: Session=Depends(get_db)):
     
     return new_contact
 
-@router.get("/contacts", response_model=List(ContactResponsechema))
+@router.get("/contacts", response_model=List[ContactResponsechema])
 def get_contacts(db: Session=Depends(get_db)):
     return db.query(Contact).all()
