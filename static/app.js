@@ -34,6 +34,11 @@ add_contact_btn.addEventListener("click", async () => {
     const name = document.getElementById("add-business-name").value;
     const category = document.getElementById("add-category").value;
     const phone = document.getElementById("add-phone").value;
+
+    const name_element = document.getElementById("add-business-name");
+    const category_element = document.getElementById("add-category");
+    const phone_element = document.getElementById("add-phone");
+
     let have_error = false
 
     if(!name){
@@ -87,6 +92,9 @@ add_contact_btn.addEventListener("click", async () => {
             }else if(response.ok){
                 error_modal_span.innerHTML = "✅اطاعات با موفقیت ثبت شد!";
                 notif_modal.classList.add("show");
+                name_element.value = "";
+                category_element.value = "";
+                phone_element.value = "";
                 load_contacts();
             }
         }
