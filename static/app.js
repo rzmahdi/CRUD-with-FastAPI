@@ -11,14 +11,14 @@ const error_modal_span = document.getElementById("error-modal-text");
 const table_body = document.getElementById("contacts-table-body")
 
 
-function close_modal(){
+function close_notif_modal(){
     notif_modal.classList.remove("show");
 }
-close_notif_btn.addEventListener("click", close_modal);
+close_notif_btn.addEventListener("click", close_notif_modal);
 
 notif_modal.addEventListener("click", function(event){
     if(event.target === notif_modal){
-        close_modal();
+        close_notif_modal();
     }
 })
 
