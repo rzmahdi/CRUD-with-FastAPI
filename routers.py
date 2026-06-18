@@ -1,5 +1,5 @@
 from fastapi.routing import APIRouter
-from fastapi import Depends, HTTPException
+from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from database.database import get_db
 from database.models import Contact
@@ -10,4 +10,8 @@ router = APIRouter()
 
 @router.post("/contacts", response_model=ContactResponsechema)
 def create_contact(request: CreateContactSchema, db: Session=Depends(get_db)):
-    pass
+    existing_contact = db.query(Contact).filter_by(name=request.name).first()
+
+    if existing_contact:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Contact allready exists!")
+    
