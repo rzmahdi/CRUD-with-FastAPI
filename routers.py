@@ -15,3 +15,13 @@ def create_contact(request: CreateContactSchema, db: Session=Depends(get_db)):
     if existing_contact:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Contact allready exists!")
     
+    new_contact = Contact(
+        name=request.name,
+        category=request.category,
+        phone=request.phone
+    )
+    db.add(new_contact)
+    db.commit()
+    db.refresh(new_contact)
+    
+    return new_contact
