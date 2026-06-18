@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from database.database import get_db
 from database.models import Contact
 from database.schema import ContactResponsechema, CreateContactSchema
+from typing import List
 
 router = APIRouter()
 
@@ -24,3 +25,7 @@ def create_contact(request: CreateContactSchema, db: Session=Depends(get_db)):
     db.refresh(new_contact)
     
     return new_contact
+
+@router.get("/contacts", response_model=List(ContactResponsechema))
+def get_contacts(db: Session=Depends(get_db)):
+    return db.query(Contact).all()
