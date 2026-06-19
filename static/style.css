@@ -20,8 +20,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-html{
     font-family: sans-serif;
 }
 div#modal-overlay, div#modal-overlay-error{
