@@ -111,7 +111,7 @@ async function load_contacts(){
 
     contacts.forEach(contact => {
         table_body.innerHTML += `
-            <tr>
+            <tr id=${contact.id}>
                 <td>${contact.name}</td>
                 <td>${contact.category}</td>
                 <td>${contact.phone}</td>
