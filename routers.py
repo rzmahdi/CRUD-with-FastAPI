@@ -40,3 +40,20 @@ def delete_contact(contact_id: int, db: Session=Depends(get_db)):
     
     db.delete(existing_contact)
     db.commit()
+
+
+@router.put("/contacts/{contact_id}")
+def edit_contact(contact_id: int, request: CreateContactSchema, db: Session=Depends(get_db)):
+    existing_contact = db.query(Contact).filter_by(id=contact_id).first()
+
+    if not existing_contact:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "contact does not exsits!")
+
+    existing_contact.name = request.name
+    existing_contact.category = request.category
+    existing_contact.phone = request.phone
+
+    db.commit()
+    db.refresh(existing_contact)
+
+    return existing_contact
