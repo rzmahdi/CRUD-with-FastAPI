@@ -36,7 +36,7 @@ def delete_contact(contact_id: int, db: Session=Depends(get_db)):
     existing_contact = db.query(Contact).filter_by(id=contact_id).first()
 
     if not existing_contact:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "contact does bot exsits!")
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "contact does not exsits!")
     
     db.delete(existing_contact)
     db.commit()
