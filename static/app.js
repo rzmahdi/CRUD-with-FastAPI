@@ -30,6 +30,11 @@ function phone_validation(phone_number){
 }
 
 
+function show_notif(notif_text){
+    error_modal_span.innerHTML = notif_text;
+    notif_modal.classList.add("show");
+}
+
 add_contact_btn.addEventListener("click", async () => {
     const name = document.getElementById("add-business-name").value;
     const category = document.getElementById("add-category").value;
