@@ -112,7 +112,9 @@ div.search-box{
 }
 .search-box button{
     background-color: transparent;
-    width: 90px;
+    width: 10%;
+    max-width: 100px;
+    text-align: center;
     padding: .7rem;
     margin: 0 .2rem;
     border: 2px solid teal;
