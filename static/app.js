@@ -121,3 +121,20 @@ async function load_contacts(){
 }
 
 load_contacts();
+
+const action_menu = document.getElementById("action-menu");
+
+table_body.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    const row = e.target.closest("tr");
+
+    if(!row){
+        return;
+    }
+
+    action_menu.classList.remove("show");
+    action_menu.offsetWidth;
+    action_menu.style.left = `${e.clientX}px`;
+    action_menu.style.top = `${e.clientY}px`;
+    action_menu.classList.add("show");
+});
