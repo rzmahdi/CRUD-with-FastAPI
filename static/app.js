@@ -92,11 +92,12 @@ add_contact_btn.addEventListener("click", async () => {
 
         if (response){
             if(response["status"] === 409){
-                error_modal_span.innerHTML = "❌اطلاعات از قبل وجود دارد!";
-                notif_modal.classList.add("show");
+                const error_text = "❌اطلاعات از قبل وجود دارد!";
+                show_notif(error_text);
             }else if(response.ok){
-                error_modal_span.innerHTML = "✅اطاعات با موفقیت ثبت شد!";
-                notif_modal.classList.add("show");
+                const error_text = "✅اطاعات با موفقیت ثبت شد!";
+                show_notif(error_text);
+
                 name_element.value = "";
                 category_element.value = "";
                 phone_element.value = "";
@@ -153,12 +154,12 @@ table_body.addEventListener("contextmenu", (e) => {
         });
         
         if(response.ok){
-            error_modal_span.innerHTML = "✅با موفقیت حذف شد";
-            notif_modal.classList.add("show");
+            const error_text = "✅با موفقیت حذف شد";
+            show_notif(error_text);
             load_contacts();
         }else{
-            error_modal_span.innerHTML = "❌" + response.statusText;
-            notif_modal.classList.add("show");
+            const error_text = "❌" + response.statusText;
+            show_notif(error_text);
         }
     })
 
