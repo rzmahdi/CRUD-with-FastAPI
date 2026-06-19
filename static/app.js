@@ -138,3 +138,9 @@ table_body.addEventListener("contextmenu", (e) => {
     action_menu.style.top = `${e.clientY}px`;
     action_menu.classList.add("show");
 });
+
+document.addEventListener("click", (e) => {
+    if (!action_menu.contains(e.target)) {
+        action_menu.classList.remove("show");
+    }
+});
