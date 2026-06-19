@@ -6,6 +6,16 @@
         transform: translate(0);
     }
 } 
+@keyframes show_action_menu_animation {
+    from{
+        opacity: 0;
+        transform: scale(.7);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+} 
 *{
     margin: 0;
     padding: 0;
@@ -141,4 +151,47 @@ th {
   padding: 1rem 0;
   background-color: teal;
   color: white;
+}
+
+#action-menu{
+    min-width: 200px;
+    width: 10%;
+    height: max-content;
+    position: fixed;
+    display: none;
+    background-color: white;
+    border: 1px solid #868686;
+    padding: .1rem;
+    border-radius: 5px;
+}
+#action-menu.show{
+    display: block;    
+    animation-name: show_action_menu_animation;
+    animation-duration: .5s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+#action-menu button{
+    width: 99%;
+    margin: .1rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: start;
+    padding: .5rem;
+    padding-right: 1rem;
+}
+
+#action-menu .delete-btn{
+    background-color: rgb(255, 65, 65);
+    transition: .2s ease;
+}
+#action-menu .delete-btn:hover{
+    background-color: rgb(255, 0, 0);
+}
+#action-menu .edit-btn{
+    background-color: rgba(201, 201, 201, 0.788);
+    transition: .2s ease;
+}
+#action-menu .edit-btn:hover{
+    background-color: rgba(0, 185, 185, 0.658);
 }
