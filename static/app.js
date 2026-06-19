@@ -137,6 +137,27 @@ table_body.addEventListener("contextmenu", (e) => {
     action_menu.style.left = `${e.clientX}px`;
     action_menu.style.top = `${e.clientY}px`;
     action_menu.classList.add("show");
+
+    const delete_btn = action_menu.children[0];
+    delete_btn.addEventListener("click", async (e) =>{
+        const response = await fetch(`/contacts/${row.id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        
+        if(response.ok){
+            error_modal_span.innerHTML = "✅با موفقیت حذف شد";
+            notif_modal.classList.add("show");
+            load_contacts();
+        }else{
+            error_modal_span.innerHTML = "❌" + response.statusText;
+            notif_modal.classList.add("show");
+        }
+    })
+
+    
 });
 
 document.addEventListener("click", (e) => {
@@ -144,3 +165,4 @@ document.addEventListener("click", (e) => {
         action_menu.classList.remove("show");
     }
 });
+
