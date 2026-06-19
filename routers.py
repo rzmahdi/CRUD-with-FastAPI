@@ -29,3 +29,14 @@ def create_contact(request: CreateContactSchema, db: Session=Depends(get_db)):
 @router.get("/contacts", response_model=List[ContactResponsechema])
 def get_contacts(db: Session=Depends(get_db)):
     return db.query(Contact).all()
+
+
+@router.post("/contacts/{contact_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_contact(contact_id: int, db: Session=Depends(get_db)):
+    existing_contact = db.query(Contact).filter_by(id=contact_id).first()
+
+    if not existing_contact:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "contact does bot exsits!")
+    
+    db.delete(existing_contact)
+    db.commit()
