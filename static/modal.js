@@ -35,6 +35,6 @@ add_new_data_close_btn.addEventListener("click", close_add_data_modal);
 modal.addEventListener("click", function(event){
     if(event.target === modal){
         close_modal();
-        close_add_box();
+        close_add_data_modal();
     }
 })
