@@ -4,6 +4,11 @@ const category_error_span = document.getElementById("category-error");
 const phone_error_span = document.getElementById("phone-error");
 const phone_validation_error_span = document.getElementById("phone-error-validation");
 
+const update_business_error_span = document.getElementById("update-business-name-error");
+const update_category_error_span = document.getElementById("update-category-error");
+const update_phone_error_span = document.getElementById("update-phone-error");
+const update_phone_validation_error_span = document.getElementById("update-phone-error-validation");
+
 const notif_modal = document.getElementById("modal-overlay-error");
 const close_notif_btn = document.getElementById("modal-error-close-btn");
 const error_modal_span = document.getElementById("error-modal-text");
@@ -134,6 +139,7 @@ const action_menu = document.getElementById("action-menu");
 table_body.addEventListener("contextmenu", (e) => {
     e.preventDefault();
     const row = e.target.closest("tr");
+    console.log(row);
 
     if(!row){
         return;
@@ -165,7 +171,82 @@ table_body.addEventListener("contextmenu", (e) => {
     })
 
     const edit_btn = action_menu.children[1];
-    edit_btn.addEventListener("click", open_edit_data_modal);
+    edit_btn.addEventListener("click", (e)=>{
+        action_menu.classList.remove("show");
+        open_edit_data_modal();
+
+        update_data_btn.addEventListener("click", async(e)=>{
+            const name = document.getElementById("update-business-name").value;
+            const category = document.getElementById("update-category").value;
+            const phone = document.getElementById("update-phone").value;
+            
+            const name_element = document.getElementById("update-business-name");
+            const category_element = document.getElementById("update-category");
+            const phone_element = document.getElementById("update-phone");
+            
+            let have_error = false
+            
+            if(!name){
+                update_business_error_span.classList.add("show");
+                have_error = true;
+            }else{
+                update_business_error_span.classList.remove("show");
+            }
+            
+            if(!category){
+                update_category_error_span.classList.add("show");
+                have_error = true;
+            }else{
+                update_category_error_span.classList.remove("show");
+            }
+            
+            if(!phone){
+                update_phone_error_span.classList.add("show");
+                have_error = true;
+            }else{
+                update_phone_error_span.classList.remove("show");
+            }
+            
+            if(!phone_validation(phone)){
+                update_phone_validation_error_span.classList.add("show");
+                have_error = true;
+            }else{
+                update_phone_validation_error_span.classList.remove("show");
+            }
+            
+            if(have_error){
+                return
+            }else{
+                const response = await fetch(`/contacts/${row.id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name,
+                        category,
+                        phone
+                    })
+                });
+                
+                if (response){
+                    if(response["status"] === 404){
+                        const error_text = "❌اطلاعات وجود ندارد";
+                        show_notif(error_text);
+                    }else if(response.ok){
+                        const error_text = "✅اطاعات با موفقیت ویرایش شد!";
+                        show_notif(error_text);
+                        
+                        name_element.value = "";
+                        category_element.value = "";
+                        phone_element.value = "";
+                        
+                        load_contacts();
+                    }
+                }
+            }
+        })
+    });
 });
 
 document.addEventListener("click", (e) => {
