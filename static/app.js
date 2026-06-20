@@ -15,6 +15,7 @@ const error_modal_span = document.getElementById("error-modal-text");
 const update_data_btn = document.getElementById("update-btn");
 
 const table_body = document.getElementById("contacts-table-body")
+let selectedContactId = null;
 
 
 function close_notif_modal(){
@@ -139,36 +140,17 @@ const action_menu = document.getElementById("action-menu");
 table_body.addEventListener("contextmenu", (e) => {
     e.preventDefault();
     const row = e.target.closest("tr");
-    console.log(row);
 
     if(!row){
         return;
     }
 
+    selectedContactId = row.id;
     action_menu.classList.remove("show");
     action_menu.offsetWidth;
     action_menu.style.left = `${e.clientX}px`;
     action_menu.style.top = `${e.clientY}px`;
     action_menu.classList.add("show");
-
-    const delete_btn = action_menu.children[0];
-    delete_btn.addEventListener("click", async (e) =>{
-        const response = await fetch(`/contacts/${row.id}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        
-        if(response.ok){
-            const error_text = "✅با موفقیت حذف شد";
-            show_notif(error_text);
-            load_contacts();
-        }else{
-            const error_text = "❌" + response.statusText;
-            show_notif(error_text);
-        }
-    })
 
     const edit_btn = action_menu.children[1];
     edit_btn.addEventListener("click", (e)=>{
@@ -255,3 +237,21 @@ document.addEventListener("click", (e) => {
     }
 });
 
+const delete_btn = action_menu.children[0];
+delete_btn.addEventListener("click", async (e) =>{
+    const response = await fetch(`/contacts/${selectedContactId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    
+    if(response.ok){
+        const error_text = "✅با موفقیت حذف شد";
+        show_notif(error_text);
+        load_contacts();
+    }else{
+        const error_text = "❌" + response.statusText;
+        show_notif(error_text);
+    }
+})
