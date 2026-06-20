@@ -39,6 +39,7 @@ div#modal-overlay-error{
 }
 div.modal-add-new-data-box, div.modal-error-box, div.modal-update-box{
     background: white;
+    display: none;
     width: 90%;
     max-width: 500px;
     margin: 100px auto;
@@ -48,6 +49,9 @@ div.modal-add-new-data-box, div.modal-error-box, div.modal-update-box{
     animation-name: show_task_animation;
     animation-duration: 1s;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+div.modal-add-new-data-box.show, div.modal-update-box.show{
+    display: block;
 }
 #modal-overlay input{
     width: 85%;
