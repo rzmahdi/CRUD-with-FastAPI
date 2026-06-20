@@ -7,6 +7,7 @@ const phone_validation_error_span = document.getElementById("phone-error-validat
 const notif_modal = document.getElementById("modal-overlay-error");
 const close_notif_btn = document.getElementById("modal-error-close-btn");
 const error_modal_span = document.getElementById("error-modal-text");
+const update_data_btn = document.getElementById("update-btn");
 
 const table_body = document.getElementById("contacts-table-body")
 
@@ -163,7 +164,8 @@ table_body.addEventListener("contextmenu", (e) => {
         }
     })
 
-    
+    const edit_btn = action_menu.children[1];
+    edit_btn.addEventListener("click", open_edit_data_modal);
 });
 
 document.addEventListener("click", (e) => {
