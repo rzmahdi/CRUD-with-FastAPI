@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div id="modal-overlay">
+    <div id="modal-overlay" class="show">
         <div class="modal-add-new-data-box">
             <button id="close-btn">x</button>
             <h3>اضافه کردن اطلاعات</h3>
@@ -29,6 +29,22 @@
             <span id="phone-error-validation" class="error">شماره تماس معتبر نیست</span>
 
             <button type="button" id="add-new-data-btn">اضافه کردن</button>
+        </div>
+
+        <div class="modal-update-box">
+            <button id="update-close-btn">x</button>
+            <h3>ویرایش اطلاعات</h3>
+            <input type="text" name="business-name" id="update-business-name" placeholder="نام کسب و کار">
+            <span id="update-business-name-error" class="error">این فیلد نمیتواند خالی باشد</span>
+
+            <input type="text" name="category" id="update-category" placeholder="دسته‌بندی">
+            <span id="update-category-error" class="error">این فیلد نمیتواند خالی باشد</span>
+
+            <input type="text" name="phone" id="update-phone" placeholder="شماره تماس">
+            <span id="update-phone-error" class="error">این فیلد نمیتواند خالی باشد</span>
+            <span id="update-phone-error-validation" class="error">شماره تماس معتبر نیست</span>
+
+            <button type="button" id="update-btn">اضافه کردن</button>
         </div>
     </div>
 
