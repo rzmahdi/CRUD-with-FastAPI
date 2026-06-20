@@ -37,7 +37,7 @@ div#modal-overlay-error{
 #modal-overlay.show, #modal-overlay-error.show{
     display: block;
 }
-div.modal-add-new-data-box, div.modal-error-box{
+div.modal-add-new-data-box, div.modal-error-box, div.modal-update-box{
     background: white;
     width: 90%;
     max-width: 500px;
@@ -71,7 +71,7 @@ span.error.show{
 #modal-overlay h3{
     margin: .3rem .5rem;
 }
-#modal-overlay #add-new-data-btn{
+#modal-overlay #add-new-data-btn, #update-btn{
     width: 85%;
     height: 35px;
     margin: 1rem .3rem;
@@ -83,7 +83,7 @@ span.error.show{
     border-radius: .3rem;
     cursor: pointer;   
 }
-#close-btn, #modal-error-close-btn{
+#close-btn, #modal-error-close-btn, #update-close-btn{
     position: absolute;
     width: 2rem;
     height: 2rem;
