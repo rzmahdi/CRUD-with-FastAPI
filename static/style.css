@@ -50,6 +50,9 @@ div.modal-add-new-data-box, div.modal-error-box, div.modal-update-box{
     animation-duration: 1s;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+div.modal-error-box{
+    display: block;
+}
 div.modal-add-new-data-box.show, div.modal-update-box.show{
     display: block;
 }
