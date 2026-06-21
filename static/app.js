@@ -190,15 +190,19 @@ edit_btn.addEventListener("click", (e)=>{
     action_menu.classList.remove("show");
     open_edit_data_modal();
 
+    const name_element = document.getElementById("update-business-name");
+    const category_element = document.getElementById("update-category");
+    const phone_element = document.getElementById("update-phone");
+
+    name_element.value = document.getElementById(selectedContactId).children[0].textContent;
+    category_element.value = document.getElementById(selectedContactId).children[1].textContent;
+    phone_element.value = document.getElementById(selectedContactId).children[2].textContent;
+
     update_data_btn.addEventListener("click", async(e)=>{
         const name = document.getElementById("update-business-name").value;
         const category = document.getElementById("update-category").value;
         const phone = document.getElementById("update-phone").value;
-        
-        const name_element = document.getElementById("update-business-name");
-        const category_element = document.getElementById("update-category");
-        const phone_element = document.getElementById("update-phone");
-        
+       
         let have_error = false
         
         if(!name){
