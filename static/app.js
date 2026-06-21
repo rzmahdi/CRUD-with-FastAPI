@@ -16,6 +16,7 @@ const update_data_btn = document.getElementById("update-btn");
 
 const table_body = document.getElementById("contacts-table-body")
 let selectedContactId = null;
+let allContacts = [];
 
 
 function close_notif_modal(){
@@ -115,12 +116,8 @@ add_contact_btn.addEventListener("click", async () => {
 })
 
 
-async function load_contacts(){
-    const contacts_response = await fetch("/contacts");
-    const contacts = await contacts_response.json();
-
+function render_contacts(contacts){
     table_body.innerHTML = ""
-
 
     contacts.forEach(contact => {
         table_body.innerHTML += `
