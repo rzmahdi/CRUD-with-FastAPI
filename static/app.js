@@ -130,6 +130,15 @@ function render_contacts(contacts){
     });
 }
 
+
+async function load_contacts(){
+    const contacts_response = await fetch("/contacts");
+    allContacts = await contacts_response.json();
+
+    render_contacts(allContacts);
+}
+
+
 load_contacts();
 
 const action_menu = document.getElementById("action-menu");
