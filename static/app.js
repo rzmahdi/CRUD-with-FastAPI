@@ -262,3 +262,16 @@ edit_btn.addEventListener("click", (e)=>{
         }
     })
 });
+
+
+const search_bar = document.getElementById("search-bar");
+search_bar.addEventListener("input", (e)=>{
+    const search = e.target.value.trim().toLowerCase();
+
+    const filtredContacts = allContacts.filter(contact =>
+        contact.name.toLowerCase().includes(search) ||
+        contact.category.toLowerCase().includes(search)
+    );
+
+    render_contacts(filtredContacts);
+})
