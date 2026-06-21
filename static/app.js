@@ -252,7 +252,7 @@ edit_btn.addEventListener("click", (e)=>{
                 if(response["status"] === 404){
                     const error_text = "❌اطلاعات وجود ندارد";
                     show_notif(error_text);
-                }else if(response["status"] === 500){
+                }else if(response["status"] === 409){
                     const error_text = "❌این نام از قبل وجود دارد!";
                     show_notif(error_text);
                 }else if(response.ok){
