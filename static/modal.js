@@ -3,6 +3,7 @@ const modal = document.getElementById("modal-overlay");
 const add_new_data_close_btn = document.getElementById("close-btn");
 const add_new_data_box = document.getElementById("modal-add-new-data-box");
 const update_modal_box = document.getElementById("modal-update-box");
+const update_close_btn = document.getElementById("update-close-btn");
 
 
 function open_modal(){
@@ -18,7 +19,10 @@ function open_edit_data_modal(){
     open_modal();
     update_modal_box.classList.add("show");
 }
-
+function close_edit_data_modal(){
+    close_modal();
+    update_modal_box.classList.remove("show");
+}
 
 function close_modal(){
     modal.classList.remove("show");
@@ -31,10 +35,12 @@ function close_add_data_modal(){
 
 new_data_btn.addEventListener("click", open_add_data_modal);
 add_new_data_close_btn.addEventListener("click", close_add_data_modal);
+update_close_btn.addEventListener("click", close_edit_data_modal);
 
 modal.addEventListener("click", function(event){
     if(event.target === modal){
         close_modal();
         close_add_data_modal();
+        close_edit_data_modal();
     }
 })
