@@ -48,6 +48,9 @@ def edit_contact(contact_id: int, request: CreateContactSchema, db: Session=Depe
 
     if not existing_contact:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "contact does not exsits!")
+    
+    if db.query(Contact).filter_by(name=request.name).first():
+        raise HTTPException(status.HTTP_409_CONFLICT, "Contact name allready exists!")
 
     existing_contact.name = request.name
     existing_contact.category = request.category
